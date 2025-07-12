@@ -55,7 +55,7 @@ disabled-worlds:
   invert: false
   # List your disabled worlds HERE or "worlds: []" to disable
   worlds:
-    - world_nether
+    - world_end
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # | ANTI-WORLD DOWNLOADER                    | 
@@ -90,14 +90,12 @@ scoreboard:
     enabled: true
     rate: 200 # In ticks (20 ticks = 1 second)
 
-  title: "&d&lDeluxeHub 3 &7(%online%/%online_max%)"
+  title: "&d&lNationsMC_5514 &7(%online%/%online_max%)"
   lines:
     - "&7&m----------------------"
     - "&e&lPlayer:"
-    - "  &f%player%"
     - ""
-    - "&e&lRank:"
-    - "  &f%vault_rank%"
+    - ""
     - "&7&m----------------------"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -116,14 +114,13 @@ tablist:
   # Modify the header of the tablist
   header:
     - ""
-    - "&d&lDeluxeHub &7(%online%/%online_max%)"
+    - "&d&lNationsMC_5514 &7(%online%/%online_max%)"
     - ""
 
   # Modify the footer of the tablist
   footer:
     - ""
-    - "&6&lWebsite &fwww.examplemc.net"
-    - "&e&lStore &fbuy.examplemc.net"
+    - ""
     - ""
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -142,7 +139,7 @@ announcements:
 
   sound:
     enabled: true
-    value: BLOCK_NOTE_BLOCK_PLING
+    value: ENTITY_PLAYER_LEVELUP
     volume: 1.0
     pitch: 1.0
 
@@ -150,18 +147,18 @@ announcements:
   announcements:
     test1:
       - "&r"
-      - "<center>&e&lANNOUNCEMENT</center>"
-      - "<center>&7Rate this plugin 5 stars on Spigot!</center>"
+      - ""
+      - ""
       - "&r"
     test2:
       - "&r"
-      - "<center>&e&lANNOUNCEMENT</center>"
-      - "<center>&7This plugin was created by &eItsLewizzz</center>"
+      - ""
+      - ""
       - "&r"
     test3:
       - "&r"
-      - "<center>&e&lANNOUNCEMENT</center>"
-      - "<center>&7Configure these messages in the &bconfig.yml</center>"
+      - ""
+      - ""
       - "&r"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -174,11 +171,11 @@ launchpad:
 
   # Launch power for launchpad (max 4.0)
   launch_power: 3.0
-  launch_power_y: 1.0
+  launch_power_y: 1.5
 
   # Top and bottom block required to make a launchpad
-  top_block: STONE_PRESSURE_PLATE
-  bottom_block: REDSTONE_BLOCK
+  top_block: IRON_PRESSURE_PLATE
+  bottom_block: SLIME_BLOCK
 
   # Actions executed upon use of a launchpad
   actions:
@@ -209,7 +206,7 @@ double_jump:
 
 command_block:
   # Should the command blocker feature be enabled?
-  enabled: true
+  enabled: false
 
   # List of commands that will be blocked
   blocked_commands:
@@ -224,6 +221,8 @@ command_block:
     - /version
     - /bukkit:version
     - /bukkit:ver
+    - /kill
+    - /tp
 
 anti_swear:
   # Should the anti-swear feature be enabled?
@@ -234,6 +233,9 @@ anti_swear:
     - fuck
     - shit
     - bitch
+    - piss
+    - dick
+    - gay
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # | WORLD EVENT SETTINGS                     |
@@ -245,24 +247,24 @@ world_settings:
   disable_hunger_loss: true
   disable_fall_damage: true
   disable_player_pvp: true
-  disable_void_death: true
+  disable_void_death: false
   disable_fire_damage: true
   disable_drowning: true
-  disable_off_hand_swap: true # Requires 1.9+
+  disable_off_hand_swap: true
 
   # Misc
-  disable_weather_change: true
+  disable_weather_change: false
   disable_death_message: true
   disable_mob_spawning: true
 
   # Item entities
-  disable_item_drop: true
-  disable_item_pickup: true
+  disable_item_drop: false
+  disable_item_pickup: false
 
   # Blocks
   disable_block_break: true
   disable_block_place: true
-  disable_block_interact: true # Chest, furnace, crop tample, etc
+  disable_block_interact: false
   disable_block_burn: true
   disable_block_fire_spread: true
   disable_block_leaf_decay: true
@@ -282,23 +284,27 @@ join_leave_messages:
 # Actions executed upon join
 join_events:
   - "[MESSAGE] &8&m+---------------***---------------+"
-  - "[MESSAGE] &r"
   - "[MESSAGE] &r    &7Welcome, &b&n%player%&r &7to the server"
+  - "[MESSAGE] &r"   
   - "[MESSAGE] &r"
-  - "[MESSAGE] &r  &2&lWEBSITE &fwww.examplemc.net"
-  - "[MESSAGE] &r  &3&lSTORE &fstore.examplemc.net"
-  - "[MESSAGE] &r  &9&lDISCORD &fdiscord.examplemc.net"
   - "[MESSAGE] &r"
-  - "[MESSAGE] &r            &7&oPowered By DeluxeHub"
+  - "[MESSAGE] &r"
+  - "[MESSAGE] &r"
+  - "[MESSAGE] &r"
+  - "[MESSAGE] &r"
   - "[MESSAGE] &8&m+---------------***---------------+"
   - "[TITLE] &b&lWELCOME;&f%player%;1;2;1"
   - "[SOUND] ENTITY_PLAYER_LEVELUP"
   - "[GAMEMODE] survival"
   - "[EFFECT] SPEED;1"
+  - "[EFFECT] JUMP_BOOST;1"
+  - "[EFFECT] NIGHT_VISION;1"
+  - "[EFFECT] ABSORPTION;1"
+  - "[EFFECT] FIRE_RESISTANCE;1"
 
 join_settings:
   # Should we teleport the player to the spawn point (if set) on join?
-  spawn_join: true
+  spawn_join: false
   # Should we heal the player?
   heal: true
   # Should we extinguish the player?
@@ -306,11 +312,11 @@ join_settings:
   # Should we clear their inventory?
   clear_inventory: false
   # Spawn a firework on join
-  firework:
+  firework: 
     # Should we send a firework on join?
     enabled: true
     # Should we only send the firework on their first join?
-    first_join_only: true
+    first_join_only: false
 
     type: BALL_LARGE
     power: 1
@@ -340,9 +346,6 @@ custom_join_items:
         - "[MESSAGE] &r"
         - "[MESSAGE] &e&lServer Information"
         - "[MESSAGE] &r"
-        - "[MESSAGE] &bWebsite: &fwww.examplemc.net"
-        - "[MESSAGE] &cStore: &fbuy.examplemc.net"
-        - "[MESSAGE] &dDiscord: &fdiscord.examplemc.net"
         - "[MESSAGE] &r"
     server_selector:
       material: NETHER_STAR
@@ -370,7 +373,7 @@ player_hider:
   cooldown: 3
 
   not_hidden:
-    material: LIME_DYE
+    material: CYAN_DYE
     amount: 1
     display_name: '&dPlayers &8&l> &aShown &7(Right-Click)'
     lore:
